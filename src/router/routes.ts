@@ -3,6 +3,9 @@ import { RouteRecordRaw } from "vue-router";
 import HomeView from "@/views/HomeView.vue";
 import AdminView from "@/views/AdminView.vue";
 import NoAuthView from "@/views/NoAuthView.vue";
+import HideView from "@/views/HideView.vue";
+import AccessEnum from "@/access/accessEnum";
+import accessEnum from "@/access/accessEnum";
 
 export const routes: Array<RouteRecordRaw> = [
   {
@@ -16,12 +19,21 @@ export const routes: Array<RouteRecordRaw> = [
     component: NoAuthView,
   },
   {
+    path: "/hide",
+    name: "隐藏页面",
+    component: HideView,
+    meta: {
+      // 隐藏页面和导航项
+      hideInMenu: true,
+    },
+  },
+  {
     path: "/admin",
     name: "仅管理员可见",
     component: AdminView,
     meta: {
       // 访问权限
-      access: "admin",
+      access: accessEnum.ADMIN,
     },
   },
   {

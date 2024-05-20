@@ -1,5 +1,6 @@
 // 存放用户的全局状态
 import { StoreOptions } from "vuex";
+import accessEnum from "@/access/accessEnum";
 
 export default {
   namespaced: true,
@@ -7,15 +8,14 @@ export default {
   state: () => ({
     loginUser: {
       userName: "未登录",
-      userRole: "notLogin",
+      userRole: accessEnum.NOT_LOGIN,
     },
   }),
   // 执行异步操作，触发mutations的更改
   actions: {
-    // eslint-disable-next-line @typescript-eslint/no-unused-vars
-    getLoginUser({ commit, state }, playload): any {
+    getLoginUser({ commit, state }, payload): any {
       // TODO 远程登录
-      commit("updateUser", { userName: "Zhc" });
+      commit("updateUser", payload);
     },
   },
   // 同步更新变量

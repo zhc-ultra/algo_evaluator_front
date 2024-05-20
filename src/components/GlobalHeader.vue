@@ -1,6 +1,6 @@
 <!--全局导航栏组件-->
 <template>
-  <a-row class="globalHeader" style="margin-bottom: 16px" align="center">
+  <a-row class="globalHeader" align="center" :wrap="false">
     <!--栅格布局 auto start-->
     <a-col flex="auto">
       <a-menu
@@ -22,7 +22,7 @@
           </div>
         </a-menu-item>
         <!--根据路由动态渲染导航项-->
-        <a-menu-item v-for="item in routes" :key="item.path">
+        <a-menu-item v-for="item in visibleRoutes" :key="item.path">
           {{ item.name }}
         </a-menu-item>
       </a-menu>
@@ -41,13 +41,14 @@
 import { routes } from "@/router/routes";
 import { useRouter } from "vue-router";
 import { useStore } from "vuex";
-import { ref } from "vue";
+import { computed, ref } from "vue";
+import checkAccess from "@/access/checkAccess";
+import accessEnum from "@/access/accessEnum";
 // 全局状态
 const store = useStore();
 
 // 路由对象，进行路由跳转
 const router = useRouter();
-
 // 选择的导航项，默认主页
 const selectedKeys = ref(["/"]);
 
@@ -57,12 +58,12 @@ router.afterEach((to) => {
 });
 
 // 三秒后自动登录 for test
-// setTimeout(() => {
-//   store.dispatch("user/getLoginUser", {
-//     userName: "ZHC",
-//     userRole: "admin",
-//   });
-// }, 3000);
+setTimeout(() => {
+  store.dispatch("user/getLoginUser", {
+    userName: "Admin",
+    userRole: accessEnum.ADMIN,
+  });
+}, 3000);
 
 // 点击导航项之后进行路由跳转
 const doMenuClick = (key: string) => {
@@ -70,6 +71,22 @@ const doMenuClick = (key: string) => {
     path: key,
   });
 };
+
+/**
+ * 过滤掉隐藏路由（控制路由的显隐）
+ */
+const visibleRoutes = computed(() => {
+  return routes.filter((item, index) => {
+    if (item.meta?.hideInMenu) {
+      return false;
+    }
+    if (!checkAccess(store.state.user.loginUser, item.meta?.access as string)) {
+      return false;
+    }
+    return true;
+  });
+});
+
 </script>
 
 <style scoped>
