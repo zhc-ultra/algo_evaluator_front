@@ -86,7 +86,6 @@ const visibleRoutes = computed(() => {
     return true;
   });
 });
-
 </script>
 
 <style scoped>

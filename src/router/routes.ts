@@ -4,10 +4,26 @@ import HomeView from "@/views/HomeView.vue";
 import AdminView from "@/views/AdminView.vue";
 import NoAuthView from "@/views/NoAuthView.vue";
 import HideView from "@/views/HideView.vue";
-import AccessEnum from "@/access/accessEnum";
 import accessEnum from "@/access/accessEnum";
+import UserLayout from "@/layouts/UserLayout.vue";
+import UserLoginAndRegisterView from "@/views/user/UserLoginAndRegisterView.vue";
 
 export const routes: Array<RouteRecordRaw> = [
+  {
+    path: "/user",
+    name: "用户",
+    component: UserLayout,
+    children: [
+      {
+        path: "/user/login",
+        name: "用户登录",
+        component: UserLoginAndRegisterView,
+      },
+    ],
+    meta: {
+      hideInMenu: true,
+    },
+  },
   {
     path: "/",
     name: "浏览题目",
@@ -17,6 +33,10 @@ export const routes: Array<RouteRecordRaw> = [
     path: "/noAuth",
     name: "鉴权失败",
     component: NoAuthView,
+    meta: {
+      // 访问权限
+      hideInMenu: true,
+    },
   },
   {
     path: "/hide",

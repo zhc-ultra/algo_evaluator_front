@@ -1,6 +1,7 @@
 import { createApp } from "vue";
 /*引入arco design 组件库 web*/
 import ArcoVue from "@arco-design/web-vue";
+import "@/access/index";
 /*引入arco design 组件库 css*/
 import "@arco-design/web-vue/dist/arco.css";
 import App from "./App.vue";

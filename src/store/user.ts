@@ -1,6 +1,7 @@
 // 存放用户的全局状态
 import { StoreOptions } from "vuex";
 import accessEnum from "@/access/accessEnum";
+import { UserControllerService } from "../../generated";
 
 export default {
   namespaced: true,
@@ -8,14 +9,21 @@ export default {
   state: () => ({
     loginUser: {
       userName: "未登录",
-      userRole: accessEnum.NOT_LOGIN,
     },
   }),
   // 执行异步操作，触发mutations的更改
   actions: {
-    getLoginUser({ commit, state }, payload): any {
-      // TODO 远程登录
-      commit("updateUser", payload);
+    async getLoginUser({ commit, state }, payload) {
+      // 从远程请求获取登录信息
+      const res = await UserControllerService.getLoginUserUsingGet();
+      if (res.code === 0) {
+        commit("updateUser", res.data);
+      } else {
+        commit("updateUser", {
+          ...state.loginUser,
+          userRole: accessEnum.NOT_LOGIN,
+        });
+      }
     },
   },
   // 同步更新变量
