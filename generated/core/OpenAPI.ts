@@ -31,15 +31,3 @@ export const OpenAPI: OpenAPIConfig = {
     HEADERS: undefined,
     ENCODE_PATH: undefined,
 };
-
-// export const OpenAPI: OpenAPIConfig = {
-//   BASE: "http://localhost:8101/api",
-//   VERSION: "2.0",
-//   WITH_CREDENTIALS: true,
-//   CREDENTIALS: "include",
-//   TOKEN: undefined,
-//   USERNAME: undefined,
-//   PASSWORD: undefined,
-//   HEADERS: undefined,
-//   ENCODE_PATH: undefined,
-// };
