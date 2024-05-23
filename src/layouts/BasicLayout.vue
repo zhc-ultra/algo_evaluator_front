@@ -17,6 +17,7 @@
 </template>
 
 <style scoped>
+
 #basicLayout {
 }
 
@@ -25,7 +26,8 @@
 }
 
 #basicLayout .content {
-  background: linear-gradient(to right, #bbb, #fff);
+  padding:0 20px 20px 20px;
+  //background: linear-gradient(to right, #bbb, #fff);
 }
 
 #basicLayout .footer {

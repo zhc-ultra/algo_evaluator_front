@@ -4,7 +4,6 @@
       <!--默认路由-->
       <router-view />
     </template>
-
     <template v-else>
       <!--通用布局组件-->
       <basic-layout />
@@ -12,9 +11,9 @@
   </div>
 </template>
 
-<style>
+<style scoped>
 #app {
-  height: 100vh;
+  //height: 100vh;
 }
 </style>
 <script setup lang="ts">
@@ -22,6 +21,7 @@ import BasicLayout from "@/layouts/BasicLayout.vue";
 import { onMounted } from "vue";
 import { useRoute } from "vue-router";
 import axios from "axios";
+
 const route = useRoute();
 /**
  * 全局初始化入口，全局单词调用代码

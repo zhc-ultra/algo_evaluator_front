@@ -5,7 +5,7 @@
 </template>
 <script setup lang="ts"></script>
 
-<style  scoped>
+<style scoped>
 #userLayout {
   display: flex;
   justify-content: center;

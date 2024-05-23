@@ -9,6 +9,9 @@
   },
   "dependencies": {
     "@arco-design/web-vue": "^2.55.2",
+    "@bytemd/plugin-gfm": "^1.21.0",
+    "@bytemd/plugin-highlight": "^1.21.0",
+    "@bytemd/vue-next": "^1.21.0",
     "axios": "^1.7.0",
     "core-js": "^3.8.3",
     "vue": "^3.2.13",
@@ -29,6 +32,8 @@
     "eslint-config-prettier": "^8.3.0",
     "eslint-plugin-prettier": "^4.0.0",
     "eslint-plugin-vue": "^8.0.3",
+    "monaco-editor": "^0.48.0",
+    "monaco-editor-webpack-plugin": "^7.1.0",
     "openapi-typescript-codegen": "^0.29.0",
     "prettier": "^2.4.1",
     "typescript": "~4.5.5"

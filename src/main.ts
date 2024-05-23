@@ -7,6 +7,7 @@ import "@arco-design/web-vue/dist/arco.css";
 import App from "./App.vue";
 import router from "./router";
 import store from "./store";
+import "bytemd/dist/index.css";
 
 /**
  * ArcoVue  插件
