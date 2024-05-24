@@ -4,8 +4,8 @@
 /* eslint-disable */
 import type { BaseResponse_long_ } from '../models/BaseResponse_long_';
 import type { BaseResponse_Page_QuestionSubmitVO_ } from '../models/BaseResponse_Page_QuestionSubmitVO_';
-import type { QuestionSubnmitAddRequest } from '../models/QuestionSubnmitAddRequest';
-import type { QuestionSubnmitQuertRequest } from '../models/QuestionSubnmitQuertRequest';
+import type { QuestionSubmitAddRequest } from '../models/QuestionSubmitAddRequest';
+import type { QuestionSubmitQueryRequest } from '../models/QuestionSubmitQueryRequest';
 import type { CancelablePromise } from '../core/CancelablePromise';
 import { OpenAPI } from '../core/OpenAPI';
 import { request as __request } from '../core/request';
@@ -17,8 +17,8 @@ export class QuestionSubmitControllerService {
      * @returns any Created
      * @throws ApiError
      */
-    public static doQuestionSubmitUsingPost(
-        questionSubmitAddRequest: QuestionSubnmitAddRequest,
+    public static doQuestionSubmitUsingPost1(
+        questionSubmitAddRequest: QuestionSubmitAddRequest,
     ): CancelablePromise<BaseResponse_long_ | any> {
         return __request(OpenAPI, {
             method: 'POST',
@@ -39,7 +39,7 @@ export class QuestionSubmitControllerService {
      * @throws ApiError
      */
     public static listQuestionByPageUsingPost1(
-        questionSubnmitQuertRequest: QuestionSubnmitQuertRequest,
+        questionSubnmitQuertRequest: QuestionSubmitQueryRequest,
     ): CancelablePromise<BaseResponse_Page_QuestionSubmitVO_ | any> {
         return __request(OpenAPI, {
             method: 'POST',

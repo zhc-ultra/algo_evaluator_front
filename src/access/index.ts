@@ -6,17 +6,23 @@ import checkAccess from "@/access/checkAccess";
 
 // 全局路由拦截（鉴权）
 router.beforeEach(async (to, from, next) => {
-  const loginUser = store.state.user.loginUser;
+  let loginUser = store.state.user.loginUser;
   // 自动登录 (如果loginUser.userRole 为空表示首次登录)
   if (!loginUser || !loginUser.userRole) {
     await store.dispatch("user/getLoginUser");
+    // 登录后同步登录状态
+    loginUser = store.state.user.loginUser;
   }
 
   const needAccess = (to.meta?.access as string) ?? accessEnum.NOT_LOGIN;
   // 要跳转的页面需要登录
   if (needAccess !== accessEnum.NOT_LOGIN) {
     // 如果没登录，跳转到登录页
-    if (!loginUser || !loginUser.userRole) {
+    if (
+      !loginUser ||
+      !loginUser.userRole ||
+      loginUser.userRole === accessEnum.NOT_LOGIN
+    ) {
       next(`/user/login`);
       return;
     }

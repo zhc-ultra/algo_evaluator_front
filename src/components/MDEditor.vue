@@ -1,5 +1,5 @@
 <template>
-  <Editor :value="value" :plugins="plugins" @change="handleChange" />
+  <Editor :value="value" :mode="mode" :plugins="plugins" @change="handleChange" />
 </template>
 
 <script setup lang="ts">
@@ -16,11 +16,13 @@ import { ref, withDefaults, defineProps } from "vue";
 interface Props {
   value: string;
   handleChange: (v: string) => void;
+  mode?: string;
 }
 
 const props = withDefaults(defineProps<Props>(), {
   value: () => "",
   handleChange: (v: string) => {},
+  mode: () => "split",
 });
 
 const plugins = [
@@ -35,5 +37,4 @@ const plugins = [
 .bytemd-toolbar-icon.bytemd-tippy.bytemd-tippy-right:last-child {
   display: none;
 }
-
 </style>

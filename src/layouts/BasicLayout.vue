@@ -5,6 +5,7 @@
       <!--导航栏-->
       <a-layout-header class="header">
         <global-header />
+        <hr color="#eee" style="margin-top: -5px;position: absolute">
       </a-layout-header>
       <!--内容-->
       <a-layout-content class="content">
@@ -23,11 +24,13 @@
 
 #basicLayout .header {
   box-shadow: #eee 1px 1px 5px;
+  margin-bottom: 20px;
 }
 
 #basicLayout .content {
+  margin-top: 20px;
   padding:0 20px 20px 20px;
-  //background: linear-gradient(to right, #bbb, #fff);
+  background: linear-gradient(to right, #fefefe, #fff);
 }
 
 #basicLayout .footer {
