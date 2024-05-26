@@ -34,14 +34,6 @@ const props = withDefaults(defineProps<Props>(), {
 const codeEditorRef = ref();
 const codeEditor = ref();
 
-// const fillValue = () => {
-//   if (!codeEditor.value) {
-//     return;
-//   }
-//   // 改变值
-//   toRaw(codeEditor.value).setValue("新的值");
-// };
-
 watch(
   () => props.language,
   () => {
@@ -65,13 +57,10 @@ onMounted(() => {
     automaticLayout: true,
     colorDecorators: true,
     minimap: {
-      enabled: true,
+      enabled: false,
     },
     readOnly: false,
     theme: "vs-dark",
-    // lineNumbers: "off",
-    // roundedSelection: false,
-    // scrollBeyondLastLine: false,
   });
 
   // 编辑 监听内容变化

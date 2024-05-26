@@ -6,10 +6,10 @@ module.exports = defineConfig({
   chainWebpack(config) {
     config.plugin("monaco").use(
       new MonacoWebpackPlugin({
-        languages: ["javascript", "java", "c++"], // 仅加载必要的语言
+        languages: ["c", "java", "c++"], // 仅加载必要的语言
         features: ["coreCommands", "find"], // 仅加载必要的特性
       })
     );
-    // config.plugin("monaco").use(new MonacoWebpackPlugin());
+    // config.plugin("monaco").use(new MonacoWebpackPlugin());// 全量加载
   },
 });

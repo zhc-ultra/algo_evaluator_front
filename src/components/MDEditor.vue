@@ -1,11 +1,19 @@
 <template>
-  <Editor :value="value" :mode="mode" :plugins="plugins" @change="handleChange" />
+  <Editor
+    :value="value"
+    :mode="mode"
+    :plugins="plugins"
+    @change="handleChange"
+  />
 </template>
 
 <script setup lang="ts">
+import "katex/dist/katex.css";
 import gfm from "@bytemd/plugin-gfm";
 import highlight from "@bytemd/plugin-highlight";
 import { Editor, Viewer } from "@bytemd/vue-next";
+import math from "@bytemd/plugin-math";
+
 import { ref, withDefaults, defineProps } from "vue";
 
 /**
@@ -29,7 +37,7 @@ const plugins = [
   gfm(),
   // 代码高亮插件
   highlight(),
-  // Add more plugins here
+  math(),
 ];
 </script>
 
